@@ -1,0 +1,9 @@
+Hamming	KEYWORD1
+decode	KEYWORD2
+encode	KEYWORD3
+getMessageLength	KEYWORD4
+getEncodedMessageLength	KEYWORD5
+getParityBitsLength	KEYWORD6
+printGMatrix	KEYWORD7
+printHMatrix	KEYWORD8
+Init    KEYWORD9
