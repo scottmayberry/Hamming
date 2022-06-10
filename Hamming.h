@@ -20,7 +20,11 @@ public:
 
     //parity check methods
     bool parityCheckAndErrorCorrection(byte encodedMessage[]);
+    bool parityCheckAndErrorCorrectionNoEdit(byte encodedMessage[]);
     void parityCheckAndErrorCorrectionMulti(byte encodedMessage[], int lengthOfBitsIn);
+
+    int decode(byte encodedMessage[], byte decodedMessage[], int lengthOfSymbolsIn);
+    bool parityCheckAndErrorCorrectionNoEdit(byte encodedMessage[], byte parityCheckedMessage[]);
 
     //decode methods
     //void decodeMessageToASCII(byte encodedMessage[]);

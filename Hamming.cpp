@@ -207,6 +207,36 @@ bool Hamming::parityCheckAndErrorCorrection(byte encodedMessage[])
     return noDoubleError;
 }
 
+bool Hamming::parityCheckAndErrorCorrectionNoEdit(byte encodedMessage[], byte parityCheckedMessage[])
+{
+    for (int i = 0; i < getEncodedMessageLength(); i++)
+    {
+        parityCheckedMessage[i] = encodedMessage[i];
+    }
+    return parityCheckAndErrorCorrection(parityCheckedMessage);
+}
+
+int Hamming::decode(byte encodedMessage[], byte decodedMessage[], int lengthOfSymbolsIn)
+{
+    parityCheckAndErrorCorrectionMulti(encodedMessage, lengthOfSymbolsIn);
+    int decInd = 0;
+    int encInd = 0;
+    while (encInd < lengthOfSymbolsIn)
+    {
+        decodedMessage[decInd++] = encodedMessage[encInd++];
+        if (decInd % getMessageLength() == 0)
+        {
+            encInd += getParityBitsLength();
+        }
+    }
+    return decInd;
+}
+
+// void Hamming::decodeUntilByte(byte encodedMessage[], byte decodedMessage[])
+// {
+//     ;
+// }
+
 void Hamming::parityCheckAndErrorCorrectionMulti(byte encodedMessage[], int lengthOfBitsIn)
 {
     int i = 0;
